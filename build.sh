@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Run NAMESPACE=custom ./build.sh to customize images namespace
-NAMESPACE=${NAMESPACE-cdrx}
-
 echo "Building Default Linux image (Python 3, Precise, 64bit)"
 docker build -f Dockerfile-py3-precise-amd64 \
 -t $NAMESPACE/pyinstaller-linux \
