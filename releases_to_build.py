@@ -37,7 +37,6 @@ with open("build.sh", 'w+') as f:
         for tag_subset in powerset(variants):
             for tag_permutation in permutations(tag_subset):
                 if tag_permutation:
-                    print(tag_permutation)
                     for python_prefix in python_prefixes:
                         tags.append(python_prefix + '-' + '-'.join(tag_permutation))
 
