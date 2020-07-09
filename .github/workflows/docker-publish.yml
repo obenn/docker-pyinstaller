@@ -27,5 +27,5 @@ jobs:
       - name: Log into Docker Hub registry
         run: echo "${{ secrets.DOCKER_HUB_TOKEN}}" | docker login -u $DOCKER_HUB_NAMESPACE --password-stdin
 
-      - name: Push GitHub images
+      - name: Push Docker Hub images
         run: ./publish-docker-hub.sh $DOCKER_HUB_NAMESPACE
