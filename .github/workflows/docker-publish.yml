@@ -18,14 +18,15 @@ jobs:
       - name: Build images
         run: ./build.sh
 
+      - name: Log into Docker Hub registry
+        run: echo "${{ secrets.DOCKER_HUB_TOKEN}}" | docker login -u $DOCKER_HUB_NAMESPACE --password-stdin
+
+      - name: Push Docker Hub images
+        run: ./publish-docker-hub.sh $DOCKER_HUB_NAMESPACE
+
       - name: Log into GitHub registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
 
       - name: Push GitHub images
         run: ./publish-github.sh ${{ github.repository }}
 
-      - name: Log into Docker Hub registry
-        run: echo "${{ secrets.DOCKER_HUB_TOKEN}}" | docker login -u $DOCKER_HUB_NAMESPACE --password-stdin
-
-      - name: Push Docker Hub images
-        run: ./publish-docker-hub.sh $DOCKER_HUB_NAMESPACE
