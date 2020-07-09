@@ -2,8 +2,8 @@
 
 echo "Building Default Linux image (Python 3.8.3, Focal, 64bit)"
 docker build -f Dockerfile-py3-focal-amd64 \
---build-arg PYTHON_VERSION 3.8.3
---build-arg PYINSTALLER_VERSION 3.6
+--build-arg PYTHON_VERSION=3.8.3
+--build-arg PYINSTALLER_VERSION=3.6
 -t pyinstaller-linux \
 -t pyinstaller-linux:64bit \
 -t pyinstaller-linux:focal \
@@ -23,8 +23,8 @@ docker build -f Dockerfile-py3-focal-amd64 \
 
 echo "Building Linux image (Python 3.7.5, Precise, 64bit)"
 docker build -f Dockerfile-py3-precise-amd64 \
---build-arg PYTHON_VERSION 3.7.5
---build-arg PYINSTALLER_VERSION 3.6
+--build-arg PYTHON_VERSION=3.7.5
+--build-arg PYINSTALLER_VERSION=3.6
 -t pyinstaller-linux:precise \
 -t pyinstaller-linux:python3.7 \
 -t pyinstaller-linux:python3.7.5 \
@@ -32,8 +32,8 @@ docker build -f Dockerfile-py3-precise-amd64 \
 
 echo "Building Default Windows image (Python 3.8.3, Xenial, 64bit)"
 docker build -f Dockerfile-py3-xenial-win64 \
---build-arg PYTHON_VERSION 3.8.3
---build-arg PYINSTALLER_VERSION 3.6
+--build-arg PYTHON_VERSION=3.8.3
+--build-arg PYINSTALLER_VERSION=3.6
 -t pyinstaller-windows \
 -t pyinstaller-windows:64bit \
 -t pyinstaller-windows:xenial \
@@ -53,8 +53,8 @@ docker build -f Dockerfile-py3-xenial-win64 \
 
 echo "Building Windows image (Python 3.7.5, Xenial, 64bit)"
 docker build -f Dockerfile-py3-xenial-win64 \
---build-arg PYTHON_VERSION 3.7.5
---build-arg PYINSTALLER_VERSION 3.6
+--build-arg PYTHON_VERSION=3.7.5
+--build-arg PYINSTALLER_VERSION=3.6
 -t pyinstaller-windows:python3.7 \
 -t pyinstaller-windows:python3.7-64bit \
 -t pyinstaller-windows:python3.7-xenial \
