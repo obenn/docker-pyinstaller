@@ -1,0 +1,4 @@
+3.8.3 linux amd64 focal
+3.7.5 linux amd64 focal
+3.8.3 linux amd64 precise 
+3.7.5 linux amd64 precise

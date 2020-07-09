@@ -15,18 +15,21 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Generate build script
+        run: docker run -v "$PWD":/usr/src/app -w /usr/src/app python:3.8.3 python releases_to_build.py
+
       - name: Build images
-        run: ./build.sh
+        run: bash build.sh
 
       - name: Log into Docker Hub registry
         run: echo "${{ secrets.DOCKER_HUB_TOKEN}}" | docker login -u $DOCKER_HUB_NAMESPACE --password-stdin
 
       - name: Push Docker Hub images
-        run: ./publish-docker-hub.sh $DOCKER_HUB_NAMESPACE
+        run: bash publish-docker-hub.sh $DOCKER_HUB_NAMESPACE
 
       - name: Log into GitHub registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
 
       - name: Push GitHub images
-        run: ./publish-github.sh ${{ github.repository }}
+        run: bash publish-github.sh ${{ github.repository }}
 
